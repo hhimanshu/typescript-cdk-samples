@@ -1,0 +1,20 @@
+{
+  "name": "getdocuments",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.108"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.216.0",
+    "@aws-sdk/s3-request-presigner": "^3.216.0"
+  }
+}

@@ -5,7 +5,7 @@ import {TypescriptCdkStack} from '../lib/typescript-cdk-stack';
 import {Tags} from "aws-cdk-lib";
 
 const app = new cdk.App();
-const stack = new TypescriptCdkStack(app, 'TypescriptCdkStack', {
+const stack = new TypescriptCdkStack(app, 'S3DocumentsSignedUrlStack', {
     /* If you don't specify 'env', this stack will be environment-agnostic.
      * Account/Region-dependent features and context lookups will not work,
      * but a single synthesized template can be deployed anywhere. */

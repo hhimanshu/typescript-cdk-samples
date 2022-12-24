@@ -1,0 +1,57 @@
+openapi: 3.0.0
+info:
+  title: The Products API
+  version: 0.0.1
+  description: '''
+    This API works with existing products database listed at https://dummyjson.com/docs/products
+  '''
+paths:
+  /products/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The id of the product
+        schema:
+          type: string
+    get:
+      summary: Returns the Product with a given id.
+      responses:
+        '200':
+          description: The product being returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        price:
+          type: integer
+        discountPercentage:
+          type: number
+        rating:
+          type: number
+        stock:
+          type: number
+        brand:
+          type: string
+        category:
+          type: string
+        thumbnail:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+    Image:
+      type: string

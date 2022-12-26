@@ -10,9 +10,14 @@ export class OpenapiImportAllIntegrationsStack extends cdk.Stack {
     new Api(this, 'OpeAPIAllIntegration', {
       source: path.join(__dirname, "..", "assets", "openapi.yaml"),
       paths: {
-        '/products/{id}': {
-          get: new HttpIntegration(this, 'https://dummyjson.com/products', {
-            httpMethod: 'GET'
+        '/products/{productId}': {
+          get: new HttpIntegration(this, 'https://dummyjson.com/products/{productId}', {
+            httpMethod: 'GET',
+            options: {
+              requestParameters: {
+                'integration.request.path.productId': 'method.request.path.productId'
+              }
+            }
           })
         }
       }

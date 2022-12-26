@@ -6,9 +6,9 @@ info:
     This API works with existing products database listed at https://dummyjson.com/docs/products
   '''
 paths:
-  /products/{id}:
+  /products/{productId}:
     parameters:
-      - name: id
+      - name: productId
         in: path
         required: true
         description: The id of the product

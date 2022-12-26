@@ -6,6 +6,16 @@ info:
     This API works with existing products database listed at https://dummyjson.com/docs/products
   '''
 paths:
+  /products:
+    get:
+      summary: Returns the list of Products
+      responses:
+        '200':
+          description: The array of Product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Products'
   /products/{productId}:
     parameters:
       - name: productId
@@ -26,6 +36,13 @@ paths:
 
 components:
   schemas:
+    Products:
+      type: object
+      properties:
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
     Product:
       type: object
       properties:

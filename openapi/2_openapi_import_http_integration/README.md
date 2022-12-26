@@ -14,3 +14,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `cdk synth`       emits the synthesized CloudFormation template
 
 ## OpenApi Spec
+This is a hand-written spec and is available [here](./assets/openapi.yaml)
+
+## HTTP API
+This project leverages external API hosted on [dummyjson](https://dummyjson.com/docs/products)

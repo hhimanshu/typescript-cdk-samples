@@ -25,23 +25,36 @@ paths:
         schema:
           type: string
     get:
-      summary: Returns the Product with a given id.
+      summary: Returns the Product with a given id. (always returns product with id `1`)
       responses:
         '200':
-          description: The product being returned
+          description: The product being returned. (always returns product with id `1`)
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
     delete:
-      summary: Deletes the Product with a given id
+      summary: Deletes the Product with a given id (simulation)
       responses:
         '200':
-          description: Deletes and returns the product
+          description: Deletes and returns the product (simulation)
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
+  /products/add:
+    post:
+      summary: Add a new Product (simulation)
+      requestBody:
+        description: A JSON based payload description Product schema
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          $ref: '#/components/schemas/Product'
 components:
   schemas:
     Products:

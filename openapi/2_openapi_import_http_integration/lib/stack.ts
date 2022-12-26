@@ -32,6 +32,16 @@ export class OpenapiImportHttpIntegrationStack extends cdk.Stack {
                             }
                         }
                     }),
+                },
+                '/products/add': {
+                    post: new HttpIntegration(this, 'https://dummyjson.com/products/add', {
+                        httpMethod: 'POST',
+                        options: {
+                            requestTemplates: {
+                                'application/json': JSON.stringify('$util.escapeJavaScript($input.body)')
+                            }
+                        }
+                    })
                 }
             }
         })

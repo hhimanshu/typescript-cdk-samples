@@ -3,7 +3,7 @@ import { Construct } from 'constructs';
 import {Api, HttpIntegration} from "@alma-cdk/openapix";
 import * as path from "path";
 
-export class OpenapiImportAllIntegrationsStack extends cdk.Stack {
+export class OpenapiImportHttpIntegrationStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 

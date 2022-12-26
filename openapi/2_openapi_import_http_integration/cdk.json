@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts bin/2_openapi_import_all_integrations.ts",
+  "app": "npx ts-node --prefer-ts-exts bin/2_openapi_import_http_integration.ts",
   "watch": {
     "include": [
       "**"

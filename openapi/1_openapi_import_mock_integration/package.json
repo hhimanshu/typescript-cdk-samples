@@ -1,0 +1,28 @@
+{
+  "name": "1_openapi_import_mock_integration",
+  "version": "0.1.0",
+  "bin": {
+    "1_openapi_import_mock_integration": "bin/1_openapi_import_mock_integration.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@alma-cdk/openapix": "^0.0.46",
+    "@types/jest": "^29.2.3",
+    "@types/node": "18.11.9",
+    "aws-cdk": "2.54.0",
+    "jest": "^29.3.1",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "~4.9.3"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.54.0",
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.21"
+  }
+}

@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  title: The Products API
+  version: 0.0.1
+  description: '''
+    This API works with existing products database listed at https://dummyjson.com/docs/products
+  '''
+paths:
+  /products:
+    get:
+      summary: Returns the list of Products
+      responses:
+        '200':
+          description: The array of Product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Products'
+  /products/{productId}:
+    parameters:
+      - name: productId
+        in: path
+        required: true
+        description: The id of the product
+        schema:
+          type: string
+    get:
+      summary: Returns the Product with a given id. (always returns product with id `1`)
+      responses:
+        '200':
+          description: The product being returned. (always returns product with id `1`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+    delete:
+      summary: Deletes the Product with a given id (simulation)
+      responses:
+        '200':
+          description: Deletes and returns the product (simulation)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+  /products/add:
+    post:
+      summary: Add a new Product (simulation)
+      requestBody:
+        description: A JSON based payload description Product schema
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          $ref: '#/components/schemas/Product'
+components:
+  schemas:
+    Products:
+      type: object
+      properties:
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        price:
+          type: integer
+        discountPercentage:
+          type: number
+        rating:
+          type: number
+        stock:
+          type: number
+        brand:
+          type: string
+        category:
+          type: string
+        thumbnail:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+    Image:
+      type: string

@@ -18,3 +18,13 @@ This is a hand-written spec and is available [here](./assets/openapi.yaml)
 
 ## HTTP API
 This project leverages external API hosted on [dummyjson](https://dummyjson.com/docs/products)
+
+```shell
+curl -v -XDELETE https://ngx8lylaok.execute-api.us-east-1.amazonaws.com/prod/products/1
+```
+where `https://ngx8lylaok.execute-api.us-east-1.amazonaws.com/prod` is your API endpoint that you get after running `cdk deploy` command.
+
+returns the following data
+```json5
+{"id":1,"title":"iPhone 9","description":"An apple mobile which is nothing like apple","price":549,"discountPercentage":12.96,"rating":4.69,"stock":94,"brand":"Apple","category":"smartphones","thumbnail":"https://i.dummyjson.com/data/products/1/thumbnail.jpg","images":["https://i.dummyjson.com/data/products/1/1.jpg","https://i.dummyjson.com/data/products/1/2.jpg","https://i.dummyjson.com/data/products/1/3.jpg","https://i.dummyjson.com/data/products/1/4.jpg","https://i.dummyjson.com/data/products/1/thumbnail.jpg"]}
+```

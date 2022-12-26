@@ -33,7 +33,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
-
+    delete:
+      summary: Deletes the Product with a given id
+      responses:
+        '200':
+          description: Deletes and returns the product
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
 components:
   schemas:
     Products:

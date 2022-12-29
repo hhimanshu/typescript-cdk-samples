@@ -1,6 +1,7 @@
 import { Context, APIGatewayProxyResult, APIGatewayEvent } from 'aws-lambda';
 // @ts-ignore
 import {faker} from "@faker-js/faker";
+import {main} from "./core";
 
 export const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> => {
     console.log(`Event: ${JSON.stringify(event, null, 2)}`);
@@ -8,7 +9,7 @@ export const handler = async (event: APIGatewayEvent, context: Context): Promise
     return {
         statusCode: 200,
         body: JSON.stringify({
-            message: faker.name.fullName(),
+            message: main(),
         }),
     };
 };

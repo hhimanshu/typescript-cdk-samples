@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { OpenapiImportLambdaIntegrationStack } from '../lib/3_openapi_import_lambda_integration-stack';
+import { OpenapiImportLambdaIntegrationStack } from '../lib/stack';
 
 const app = new cdk.App();
 new OpenapiImportLambdaIntegrationStack(app, 'OpenapiImportLambdaIntegrationStack', {

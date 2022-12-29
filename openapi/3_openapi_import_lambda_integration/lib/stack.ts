@@ -15,7 +15,7 @@ export class OpenapiImportLambdaIntegrationStack extends cdk.Stack {
             const functionUrl = aFunction.addFunctionUrl({
                 authType: FunctionUrlAuthType.NONE
             })
-            new CfnOutput(this, 'HelloWordSimpleFnUrl', {
+            new CfnOutput(this, `${fn.id}Url`, {
                 value: functionUrl.url
             })
         })

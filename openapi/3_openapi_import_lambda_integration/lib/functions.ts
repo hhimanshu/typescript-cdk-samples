@@ -13,5 +13,11 @@ export const functions: FunctionDefinition[] = [
         type: "zip",
         handlerFilePath: path.join(__dirname, '..', 'src', '1_helloworld', 'index.ts'),
         handlerName: 'handler'
+    },
+    {
+        id: 'CurrentDateSimple',
+        type: "zip",
+        handlerFilePath: path.join(__dirname, '..', 'src', '2_date', 'index.ts'),
+        handlerName: 'handler'
     }
 ]

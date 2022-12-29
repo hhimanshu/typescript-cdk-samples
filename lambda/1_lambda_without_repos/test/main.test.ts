@@ -1,6 +1,6 @@
 // import * as cdk from 'aws-cdk-lib';
 // import { Template } from 'aws-cdk-lib/assertions';
-// import * as 3OpenapiImportLambdaIntegration from '../lib/3_openapi_import_lambda_integration-stack';
+// import * as 3OpenapiImportLambdaIntegration from '../lib/1_lambda_without_repos-stack';
 
 // example test. To run these tests, uncomment this file along with the
 // example resource in lib/stack.ts

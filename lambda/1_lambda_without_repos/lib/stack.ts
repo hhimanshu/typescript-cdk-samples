@@ -4,7 +4,7 @@ import {Construct} from 'constructs';
 import {FunctionUrlAuthType} from "aws-cdk-lib/aws-lambda";
 import {functions} from "./functions";
 
-export class OpenapiImportLambdaIntegrationStack extends cdk.Stack {
+export class LambdaWithoutReposStack extends cdk.Stack {
     createFunctions = () => {
         functions.map(fn => {
             const aFunction = new aws_lambda_nodejs.NodejsFunction(this, fn.id, {

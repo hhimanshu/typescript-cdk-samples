@@ -16,7 +16,7 @@ export class DocumentManagementAPI extends Construct {
 
         const getDocumentsFunction = new aws_lambda_nodejs.NodejsFunction(this, "GetDocumentsFunction", {
             runtime: Runtime.NODEJS_18_X,
-            entry: path.join(__dirname, '..', '..', 'src', 'functions', 'getDocuments', 'index.ts'),
+            entry: path.join(__dirname, '..', '..', 'src', 'functions', 'getDocuments', 'functions.ts'),
             handler: 'getDocuments',
             bundling: {
                 externalModules: [

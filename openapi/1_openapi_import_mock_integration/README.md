@@ -13,6 +13,9 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `cdk diff`        compare deployed stack with current state
 * `cdk synth`       emits the synthesized CloudFormation template
 
+## OpenAPI Spec
+This has been take from [here](https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v3.0/petstore.yaml)
+
 ## APIs
 ```shell
 curl -v -H "Content-Type:application/json" https://luafd1kyc8.execute-api.us-east-1.amazonaws.com/prod/pets/hello

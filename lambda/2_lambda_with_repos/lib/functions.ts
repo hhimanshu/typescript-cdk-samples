@@ -1,4 +1,7 @@
 import * as path from "path";
+import * as dotenv from 'dotenv'
+
+dotenv.config();
 
 type EnvVar = {
     key: string,
@@ -22,9 +25,9 @@ export const functions: FunctionDefinition[] = [
         handlerFilePath: path.join(__dirname, '..', 'src', '2_auradb', 'index.ts'),
         handlerName: 'handler',
         envVariables: [
-            {key: 'uri', value: 'neo4j+s://XX.databases.neo4j.io'},
-            {key: 'user', value: 'neo4j'},
-            {key: 'password', value: 'XX'},
+            {key: 'uri', value: process.env.DB_URI as string},
+            {key: 'user', value: process.env.DB_USER as string},
+            {key: 'password', value: process.env.DB_PASSWD as string},
         ]
     }
 ]

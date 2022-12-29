@@ -1,4 +1,4 @@
-import { Context, APIGatewayProxyResult, APIGatewayEvent } from 'aws-lambda';
+import {Context, APIGatewayProxyResult, APIGatewayEvent} from 'aws-lambda';
 // @ts-ignore
 import {faker} from "@faker-js/faker";
 import {main} from "./core";

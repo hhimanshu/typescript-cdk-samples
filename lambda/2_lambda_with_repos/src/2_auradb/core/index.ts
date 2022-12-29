@@ -1,9 +1,11 @@
 import neo4j, {Driver, Session} from "neo4j-driver"
 
-export const main = async () => {
-    const uri = 'neo4j+s://45e.databases.neo4j.io';
-    const user = 'neo4j';
-    const password = 'xcvffgresatsOoW8gABzKKGsgbF7CZ4Ma29Ywpawedrf456fsd3_A';
+type Props = {
+    uri: string,
+    user: string,
+    password: string
+}
+export const main = async ({uri, user, password}: Props) => {
     const driver: Driver = neo4j.driver(uri, neo4j.auth.basic(user, password))
     const session: Session = driver.session({database: "neo4j"});
 

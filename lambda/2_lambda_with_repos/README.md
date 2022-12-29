@@ -48,9 +48,11 @@ Here there is one `.template.json` file called `LambdaWithReposStack.template.js
     - `id` of the lambda function, that you defined when creating a function.
       With that you can invoke the function as defined below for 2 different lambda functions
 ```shell
-sam local invoke -t cdk.out/LambdaWithReposStack.template.json FakerGetFullName
+cdk synth && sam local invoke -t cdk.out/LambdaWithReposStack.template.json FakerGetFullName
+cdk synth && sam local invoke -t cdk.out/LambdaWithReposStack.template.json AuraDbTotalNodes    
 ```
 If the call is successful, you should see the output from your lambda function on your console.
+> Here, using `cdk synth` before invoking ensures that the latest template.json file will always be available.
 
 ## Resources
 [Locally testing AWS CDK applications](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-cdk-testing.html)

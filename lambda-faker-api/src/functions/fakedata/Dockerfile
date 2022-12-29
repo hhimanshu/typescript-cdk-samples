@@ -1,6 +1,6 @@
 FROM public.ecr.aws/lambda/nodejs:18 as builder
 WORKDIR /usr/app
-COPY package.json index.ts ./
+COPY package.json functions.ts ./
 RUN npm install
 RUN npm run build
 

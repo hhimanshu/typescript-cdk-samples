@@ -30,6 +30,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 cdk synth
 ```
 This creates the CloudFormation template in a directory called `cdk.out`. Depending on how many stacks you have, you will find multiple `<stackname>.template.json`.
+> Remember to call this command every time you make changes in your stack to generate the latest template.json file
 
 For example
 ```shell

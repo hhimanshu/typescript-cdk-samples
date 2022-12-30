@@ -1,7 +1,7 @@
 import * as path from "path";
 import * as dotenv from 'dotenv'
 import {Construct} from "constructs";
-import {aws_lambda_nodejs, aws_ssm, CfnOutput} from "aws-cdk-lib";
+import {aws_lambda_nodejs, CfnOutput} from "aws-cdk-lib";
 import {FunctionUrlAuthType} from "aws-cdk-lib/aws-lambda";
 
 dotenv.config();

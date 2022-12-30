@@ -1,15 +1,9 @@
-import neo4j, {Driver, Session} from "neo4j-driver"
+import {NetworkQueryProps} from "./types";
+import neo4j, {Driver, Session} from "neo4j-driver";
 
-type Props = {
-    uri: string,
-    user: string,
-    password: string
-}
-export const main = async ({uri, user, password}: Props) => {
+export const executeQuery = async ({uri, user, password, query}: NetworkQueryProps) => {
     const driver: Driver = neo4j.driver(uri, neo4j.auth.basic(user, password))
     const session: Session = driver.session({database: "neo4j"});
-
-    const query = `MATCH (n) RETURN count(n)`;
 
     try {
         const readResult = await session.executeRead(tx => tx.run(query))

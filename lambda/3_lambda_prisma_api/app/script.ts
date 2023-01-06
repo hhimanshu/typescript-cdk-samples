@@ -43,7 +43,7 @@ async function main() {
     // await insertUser()
     // await getAllUsers()
     // await createUserWithPosts()
-    await createUser("Jamie D", "jamie@email.com")
+    // await createUser("Jamie D", "jamie@email.com")
     await getAllUsers();
 }
 

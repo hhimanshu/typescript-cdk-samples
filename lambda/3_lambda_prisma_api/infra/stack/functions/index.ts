@@ -14,6 +14,8 @@ export class Functions extends Construct {
             handler: "handler",
         })
 
+        helloFn.addEnvironment("DATABASE_URL", "file:./dev.db")
+
         const helloFnUrl = helloFn.addFunctionUrl({
             authType: FunctionUrlAuthType.NONE
         })

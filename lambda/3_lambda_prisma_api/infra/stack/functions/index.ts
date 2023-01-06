@@ -4,7 +4,6 @@ import * as path from "path";
 import {FunctionUrlAuthType} from "aws-cdk-lib/aws-lambda";
 
 export class Functions extends Construct {
-
     constructor(scope: Construct, id: string) {
         super(scope, id);
 
@@ -16,12 +15,19 @@ export class Functions extends Construct {
 
         helloFn.addEnvironment("DATABASE_URL", "file:./dev.db")
 
-        const helloFnUrl = helloFn.addFunctionUrl({
-            authType: FunctionUrlAuthType.NONE
-        })
+        const helloFnUrl = helloFn.addFunctionUrl({authType: FunctionUrlAuthType.NONE})
 
         new CfnOutput(this, "helloFunctionUrl", {
             value: helloFnUrl.url
         })
+
+        const getAllUsersFn = new aws_lambda_nodejs.NodejsFunction(this, 'GetAllUsersFn', {
+            entry: path.join(__dirname, "users", "get-all-users.ts"),
+            handler: "handler"
+        })
+        getAllUsersFn.addEnvironment("DATABASE_URL", "file:./dev.db")
+        const getAllUserFnUrl = getAllUsersFn.addFunctionUrl({authType: FunctionUrlAuthType.NONE})
+        new CfnOutput(this, 'getAllUsersFnUrl', {value: getAllUserFnUrl.url})
     }
 }
+

@@ -21,13 +21,15 @@
     "strictPropertyInitialization": false,
     "typeRoots": [
       "./node_modules/@types"
-    ]
+    ],
+    "baseUrl": "../",
+    "paths": {
+      "@app/*": ["app/*"]
+    }
   },
-  "include": [
-    "../app/*.ts"
-  ],
   "exclude": [
     "node_modules",
-    "cdk.out"
+    "cdk.out",
+    "../app"
   ]
 }

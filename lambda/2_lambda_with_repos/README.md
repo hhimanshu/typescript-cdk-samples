@@ -13,9 +13,8 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `cdk diff`        compare deployed stack with current state
 * `cdk synth`       emits the synthesized CloudFormation template
 
-
 ## Features
-1. Does not create handler as a repo. The function code resides in a single file inside a directory.
+1. Create functions as npm repositories.
 2. Does not integrate with API Gateway.
 3. Creates a Function URL to be accessed over internet without authentication.
 
@@ -35,25 +34,25 @@ This creates the CloudFormation template in a directory called `cdk.out`. Depend
 For example
 ```shell
 ls cdk.out 
-LambdaWithoutReposStack.assets.json
-LambdaWithoutReposStack.template.json
-asset.96df2a2f62d868124aec145df1e8a26ddc82e52f1fe0fa50a55dbb0ffe74e6de
-asset.c4e0d69e32b065476fcb88113eb86eee2a5938a7a7f9a748cd6fb81298273c86
+LambdaWithReposStack.assets.json
+LambdaWithReposStack.template.json
+asset.04e09d747289f3f525284c2892a3f2a173b721ec88eea5968677f182441cff67
 cdk.out
 manifest.json
 tree.json
 ```
-Here there is one `.template.json` file called `LambdaWithoutReposStack.template.json`, where `LambdaWithoutReposStack` is the `id` of the stack.
+Here there is one `.template.json` file called `LambdaWithReposStack.template.json`, where `LambdaWithReposStack` is the `id` of the stack.
 
 - In order to invoke a lambda function locally, you need 2 things
-  - template json file path, that you found out in the previous step
-  - `id` of the lambda function, that you defined when creating a function.
-With that you can invoke the function as defined below for 2 different lambda functions
+    - template json file path, that you found out in the previous step
+    - `id` of the lambda function, that you defined when creating a function.
+      With that you can invoke the function as defined below for 2 different lambda functions
 ```shell
-sam local invoke -t ./cdk.out/LambdaWithoutReposStack.template.json HelloWorldSimple
-sam local invoke -t ./cdk.out/LambdaWithoutReposStack.template.json CurrentDateSimple
+cdk synth && sam local invoke -t cdk.out/LambdaWithReposStack.template.json FakerGetFullName
+cdk synth && sam local invoke -t cdk.out/LambdaWithReposStack.template.json AuraDbTotalNodes    
 ```
 If the call is successful, you should see the output from your lambda function on your console.
+> Here, using `cdk synth` before invoking ensures that the latest template.json file will always be available.
 
 ## Resources
 [Locally testing AWS CDK applications](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-cdk-testing.html)

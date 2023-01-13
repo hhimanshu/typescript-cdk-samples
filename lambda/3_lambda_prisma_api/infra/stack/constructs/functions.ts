@@ -19,8 +19,6 @@ export class Functions extends Construct {
             handler: "handler",
         })
 
-        helloFn.addEnvironment("DATABASE_URL", "file:./dev.db")
-
         const helloFnUrl = helloFn.addFunctionUrl({authType: FunctionUrlAuthType.NONE})
 
         new CfnOutput(this, "helloFunctionUrl", {
@@ -33,6 +31,7 @@ export class Functions extends Construct {
         })
         const dbSecret = props.db.secret;
         dbSecret?.grantRead(getAllUsersFn)
+        dbSecret?.grantWrite(getAllUsersFn)
         const host = dbSecret?.secretValueFromJson("host").unsafeUnwrap();
         const port = dbSecret?.secretValueFromJson("port").unsafeUnwrap();
         const engine = dbSecret?.secretValueFromJson("engine").unsafeUnwrap();

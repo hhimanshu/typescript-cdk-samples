@@ -9,7 +9,7 @@ export class LambdaPrismaLayerStack extends cdk.Stack {
     super(scope, id, props);
 
     const helperLayer = new LayerVersion(this, "HelperLayer", {
-      code: Code.fromAsset(path.join(__dirname, "../resources/layers/helper")),
+      code: Code.fromAsset(path.join(__dirname, "../src/layers/helper")),
       description: "Common helper utility",
       compatibleRuntimes: [Runtime.NODEJS_18_X],
       removalPolicy: RemovalPolicy.DESTROY,
@@ -17,7 +17,7 @@ export class LambdaPrismaLayerStack extends cdk.Stack {
 
     const fn = new aws_lambda.Function(this, "HelloFunction", {
       runtime: Runtime.NODEJS_18_X,
-      code: Code.fromAsset(path.join(__dirname, "../resources/lambda")),
+      code: Code.fromAsset(path.join(__dirname, "../lambda")),
       handler: "index.handler",
       layers: [helperLayer]
     })

@@ -1,8 +1,9 @@
 import * as cdk from 'aws-cdk-lib';
 import {aws_lambda, CfnOutput, RemovalPolicy} from 'aws-cdk-lib';
 import {Construct} from 'constructs';
-import {Code, FunctionUrlAuthType, LayerVersion, Runtime} from "aws-cdk-lib/aws-lambda";
+import {Code, Function, FunctionUrlAuthType, LayerVersion, Runtime} from "aws-cdk-lib/aws-lambda";
 import * as path from "path";
+import {NodejsFunction} from "aws-cdk-lib/aws-lambda-nodejs";
 
 export class LambdaPrismaLayerStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -25,6 +26,25 @@ export class LambdaPrismaLayerStack extends cdk.Stack {
     const fnUrl = fn.addFunctionUrl({authType: FunctionUrlAuthType.NONE})
     new CfnOutput(this, "helloFnUrl", {
       value: fnUrl.url
+    })
+
+    const dbLayer = new LayerVersion(this, "DBLayer", {
+      code: Code.fromAsset(path.join(__dirname, "../src/layers/database")),
+      description: "Database Layer",
+      compatibleRuntimes: [Runtime.NODEJS_18_X],
+      removalPolicy: RemovalPolicy.DESTROY,
+    })
+
+    const getUsersFn = new Function(this, "GetUsersFunction", {
+      runtime: Runtime.NODEJS_18_X,
+      code: Code.fromAsset(path.join(__dirname, "../lambda")),
+      handler: "db.handler",
+      layers: [dbLayer]
+    })
+
+    const getUsersFnUrl = getUsersFn.addFunctionUrl({authType: FunctionUrlAuthType.NONE})
+    new CfnOutput(this, "prismaFnUrl", {
+      value: getUsersFnUrl.url
     })
   }
 }
